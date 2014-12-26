@@ -4,4 +4,4 @@ NLogging
 A C# logging library.
 
 ## Motivation
-Use logging system like java.util.logging and python logging package in C# .
+Use logging system like and ython logging package and java.util.logging in C# .
