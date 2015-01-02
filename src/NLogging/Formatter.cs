@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    class Formatter
+    public class Formatter
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace NLogging
 {
-    enum LogLevel: int
+    public enum LogLevel : int
     {
         CRITICAL = 50,
         ERROR = 40,
