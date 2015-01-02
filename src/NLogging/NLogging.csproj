@@ -33,7 +33,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formatter.cs" />
-    <Compile Include="handler.cs" />
+    <Compile Include="Handler.cs" />
+    <Compile Include="IHandler.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LogLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
