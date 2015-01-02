@@ -1,7 +1,8 @@
 ﻿namespace NLogging
 {
     using System;
-using System.Collections.Generic;
+    using System.Collections.Generic;
+
     /// <summary>
     /// A Logging class.
     /// </summary>
@@ -18,7 +19,7 @@ using System.Collections.Generic;
 
         private Dictionary<string, Logger> loggerDictionary;
 
-        private Logging() 
+        private Logging()
         {
             this.loggerDictionary = new Dictionary<string, Logger>();
         }
