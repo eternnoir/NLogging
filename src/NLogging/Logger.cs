@@ -6,12 +6,13 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Logger
+    public class Logger : ILogger
     {
         private string loggerName;
         private LogLevel logLevel;
+        private List<IHandler> handlerList;
 
-        public string LoggerName 
+        public string Name 
         {
             get
             {
@@ -36,14 +37,19 @@
 
         public Logger(string loggerName)
         {
-            this.loggerName = loggerName;
-            this.logLevel = LogLevel.NOTSET;
+            this.init(loggerName, LogLevel.NOTSET);
         }
 
         public Logger(string loggerName, LogLevel logLevel)
         {
+            this.init(loggerName, logLevel);
+        }
+
+        private void init(string loggerName, LogLevel logLevel)
+        {
             this.loggerName = loggerName;
             this.logLevel = logLevel;
+            this.handlerList = new List<IHandler>();
         }
     }
 }

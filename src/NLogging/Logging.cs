@@ -17,11 +17,11 @@
         /// </summary>
         private static object syncRoot = new object();
 
-        private Dictionary<string, Logger> loggerDictionary;
+        private Dictionary<string, ILogger> loggerDictionary;
 
         private Logging()
         {
-            this.loggerDictionary = new Dictionary<string, Logger>();
+            this.loggerDictionary = new Dictionary<string, ILogger>();
         }
 
         public static Logging Instance
@@ -40,7 +40,7 @@
             }
         }
 
-        public Logger GetLogger(string loggerName)
+        public ILogger GetLogger(string loggerName)
         {
             lock (syncRoot)
             {
@@ -49,6 +49,19 @@
                     this.loggerDictionary.Add(loggerName, new Logger(loggerName));
                 }
                 return this.loggerDictionary[loggerName];
+            }
+        }
+
+        public void AddLogger(ILogger logger)
+        {
+            lock (syncRoot)
+            {
+                if (this.loggerDictionary.ContainsKey(logger.Name))
+                {
+                    //TODO throw exception
+                    throw new Exception("Logger exist.");
+                }
+                this.loggerDictionary.Add(logger.Name, logger);
             }
         }
 
