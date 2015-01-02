@@ -11,5 +11,7 @@ namespace NLogging
         {
             get;
         }
+
+        void AddHandler(IHandler handler);
     }
 }

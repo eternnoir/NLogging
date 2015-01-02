@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="Formatter.cs" />
     <Compile Include="Handler.cs" />
+    <Compile Include="IFormatter.cs" />
     <Compile Include="IHandler.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Logger.cs" />

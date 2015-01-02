@@ -51,5 +51,13 @@
             this.logLevel = logLevel;
             this.handlerList = new List<IHandler>();
         }
+
+        public void AddHandler(IHandler handler)
+        {
+            if (handler != null)
+            {
+                this.handlerList.Add(handler);
+            }
+        }
     }
 }
