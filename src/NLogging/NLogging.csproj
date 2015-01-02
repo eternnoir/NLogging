@@ -35,6 +35,7 @@
     <Compile Include="Formatter.cs" />
     <Compile Include="handler.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="LogLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
