@@ -13,5 +13,6 @@ namespace NLogging
         }
 
         void AddHandler(IHandler handler);
+        void WriteLog(LogLevel level, string message);
     }
 }
