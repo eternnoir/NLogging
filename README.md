@@ -1,4 +1,4 @@
-NLogging
+NLogging ![](https://travis-ci.org/eternnoir/NLogging.svg?branch=develop)
 ========
 
 A C# logging library.
