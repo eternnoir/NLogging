@@ -5,6 +5,6 @@ install:
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
 script:
-  - xbuild ./src/NLogging/NLogging.sln
-  - xbuild ./src/NLogging.Test/NLogging.Test.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./src/NLogging.Test/bin/Debug/NLogging.Test.dll
+  - xbuild src/NLogging/NLogging.sln
+  - xbuild src/NLogging.Test/NLogging.Test.sln
+  - nunit-console ./src/NLogging.Test/bin/Debug/NLogging.Test.dll
