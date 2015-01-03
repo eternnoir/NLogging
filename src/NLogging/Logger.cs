@@ -12,6 +12,7 @@
         private string loggerName;
         private LogLevel logLevel;
         private List<IHandler> handlerList;
+        private object syncObj = new object();
 
         public string Name 
         {
@@ -20,20 +21,12 @@
                 return this.loggerName;
             }
         }
-        
-        /// <summary>
-        /// Log level property
-        /// </summary>
-        public LogLevel Level
+
+
+
+        public void SetLevel(LogLevel level)
         {
-            get
-            {
-                return this.logLevel;
-            }
-            set
-            {
-                this.logLevel = value;
-            }
+            this.logLevel = level;
         }
 
         public Logger(string loggerName)
@@ -48,16 +41,22 @@
 
         private void init(string loggerName, LogLevel logLevel)
         {
-            this.loggerName = loggerName;
-            this.logLevel = logLevel;
-            this.handlerList = new List<IHandler>();
+            lock (syncObj)
+            {
+                this.loggerName = loggerName;
+                this.logLevel = logLevel;
+                this.handlerList = new List<IHandler>();
+            }
         }
 
         public void AddHandler(IHandler handler)
         {
-            if (handler != null)
+            lock (syncObj)
             {
-                this.handlerList.Add(handler);
+                if (handler != null)
+                {
+                    this.handlerList.Add(handler);
+                }
             }
         }
 
@@ -87,6 +86,17 @@
             this.WriteLog(LogLevel.CRITICAL, message);
         }
 
+
+        public void Error(string message)
+        {
+            if (!this.canLog(LogLevel.ERROR))
+            {
+                return;
+            }
+            this.WriteLog(LogLevel.ERROR, message); ;
+        }
+
+
         public void Warning(string message)
         {
             if (!this.canLog(LogLevel.WARNING))
@@ -111,8 +121,9 @@
             {
                 return;
             }
-            this.WriteLog(LogLevel.CRITICAL, message);
+            this.WriteLog(LogLevel.DEBUG, message);
         }
+
 
         private bool canLog(LogLevel level)
         {
@@ -122,5 +133,8 @@
             }
             return true;
         }
+
+
+
     }
 }
