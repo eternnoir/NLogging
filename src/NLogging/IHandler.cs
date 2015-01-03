@@ -7,5 +7,8 @@ namespace NLogging
 {
     public interface IHandler
     {
+        void push(Record record);
+        void flush();
+        void SetFormatter(IFormatter formatter);
     }
 }
