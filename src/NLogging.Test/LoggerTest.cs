@@ -37,13 +37,61 @@ namespace NLogging.Test
             var handler = new StubHandler();
             logger.AddHandler(handler);
             logger.SetLevel(LogLevel.DEBUG);
+            pushLogMsg(logger);
+            Assert.AreEqual(handler.GetRecordList().Count, 5);
+        }
+
+        [Test]
+        public void TestLogLevelInfo()
+        {
+            var logger = createTestLogger("TestLogLevelInfo");
+            var handler = new StubHandler();
+            logger.AddHandler(handler);
+            logger.SetLevel(LogLevel.INFO);
+            pushLogMsg(logger);
+            Assert.AreEqual(handler.GetRecordList().Count, 4);
+        }
+
+        [Test]
+        public void TestLogLevelWarning()
+        {
+            var logger = createTestLogger("TestLogLevelWarning");
+            var handler = new StubHandler();
+            logger.AddHandler(handler);
+            logger.SetLevel(LogLevel.WARNING);
+            pushLogMsg(logger);
+            Assert.AreEqual(handler.GetRecordList().Count, 3);
+        }
+
+        [Test]
+        public void TestLogLevelError()
+        {
+            var logger = createTestLogger("TestLogLevelError");
+            var handler = new StubHandler();
+            logger.AddHandler(handler);
+            logger.SetLevel(LogLevel.ERROR);
+            pushLogMsg(logger);
+            Assert.AreEqual(handler.GetRecordList().Count, 2);
+        }
+
+        [Test]
+        public void TestLogLevelCritical()
+        {
+            var logger = createTestLogger("TestLogLevelCritical");
+            var handler = new StubHandler();
+            logger.AddHandler(handler);
+            logger.SetLevel(LogLevel.CRITICAL);
+            pushLogMsg(logger);
+            Assert.AreEqual(handler.GetRecordList().Count, 1);
+        }
+
+        private void pushLogMsg(ILogger logger)
+        {
             logger.Debug("Debug Msg");
             logger.Info("Info Msg");
             logger.Warning("Warning Msg");
             logger.Error("Error Msg");
             logger.Critical("Critical MSg");
-            logger.WriteLog(LogLevel.NOTSET, "Noset Msg");
-            Assert.AreEqual(handler.GetRecordList().Count, 5);
         }
 
         private ILogger createTestLogger(string loggerName)
@@ -64,6 +112,7 @@ namespace NLogging.Test
 
         public override void push(Record record)
         {
+            Console.WriteLine(record.FunctionName);  
             recordList.Add(record);
         }
 
