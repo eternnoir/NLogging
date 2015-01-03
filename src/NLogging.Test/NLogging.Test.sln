@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogging.Test", "NLogging.Test.csproj", "{1687AAD4-93ED-43F4-99CF-F23D89762F4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogging", "..\NLogging\NLogging.csproj", "{65CD65B5-DEF7-43D8-B6F8-9A1AF91F6B15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1687AAD4-93ED-43F4-99CF-F23D89762F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1687AAD4-93ED-43F4-99CF-F23D89762F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1687AAD4-93ED-43F4-99CF-F23D89762F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1687AAD4-93ED-43F4-99CF-F23D89762F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65CD65B5-DEF7-43D8-B6F8-9A1AF91F6B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65CD65B5-DEF7-43D8-B6F8-9A1AF91F6B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65CD65B5-DEF7-43D8-B6F8-9A1AF91F6B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65CD65B5-DEF7-43D8-B6F8-9A1AF91F6B15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
