@@ -76,5 +76,51 @@
                 handler.push(record);
             }
         }
+
+
+        public void Critical(string message)
+        {
+            if (!this.canLog(LogLevel.CRITICAL))
+            {
+                return;
+            }
+            this.WriteLog(LogLevel.CRITICAL, message);
+        }
+
+        public void Warning(string message)
+        {
+            if (!this.canLog(LogLevel.WARNING))
+            {
+                return;
+            }
+            this.WriteLog(LogLevel.WARNING, message);
+        }
+
+        public void Info(string message)
+        {
+            if (!this.canLog(LogLevel.INFO))
+            {
+                return;
+            }
+            this.WriteLog(LogLevel.INFO, message);
+        }
+
+        public void Debug(string message)
+        {
+            if (!this.canLog(LogLevel.DEBUG))
+            {
+                return;
+            }
+            this.WriteLog(LogLevel.CRITICAL, message);
+        }
+
+        private bool canLog(LogLevel level)
+        {
+            if (level < this.logLevel)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
