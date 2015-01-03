@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -57,6 +58,22 @@
             if (handler != null)
             {
                 this.handlerList.Add(handler);
+            }
+        }
+
+        public void WriteLog(LogLevel level, string message)
+        {
+            if (message == null)
+            {
+                //TODO change exception
+                throw new Exception("Message can not be null");
+            }
+            StackTrace stack = new System.Diagnostics.StackTrace(true);
+            string functionName = stack.GetFrame(1).GetMethod().Name;
+            Record record = new Record(this.loggerName, level, stack, message, functionName);
+            foreach (var handler in handlerList)
+            {
+                handler.push(record);
             }
         }
     }
