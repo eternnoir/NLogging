@@ -8,7 +8,7 @@ using NLogging;
 namespace NLogging.Test
 {
     [TestFixture]
-    class LoggetTest
+    class LoggerTest
     {
         [Test]
         public void TestLoggerName()
@@ -40,7 +40,10 @@ namespace NLogging.Test
             logger.Debug("Debug Msg");
             logger.Info("Info Msg");
             logger.Warning("Warning Msg");
+            logger.Error("Error Msg");
             logger.Critical("Critical MSg");
+            logger.WriteLog(LogLevel.NOTSET, "Noset Msg");
+            Assert.AreEqual(handler.GetRecordList().Count, 5);
         }
 
         private ILogger createTestLogger(string loggerName)
