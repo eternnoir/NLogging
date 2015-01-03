@@ -1,7 +1,6 @@
 language: csharp
 solution: src/NLogging/NLogging.sln
 install:
-  - sudo apt-get install nunit-console
   - nuget restore ./src/NLogging/NLogging.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 
