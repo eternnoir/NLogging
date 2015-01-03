@@ -9,6 +9,5 @@ namespace NLogging
     {
         void push(Record record);
         void flush();
-        void SetFormatter(IFormatter formatter);
     }
 }

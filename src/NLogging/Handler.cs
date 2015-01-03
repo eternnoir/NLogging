@@ -6,7 +6,17 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Handler
+    public abstract class Handler : IHandler
     {
+        private IFormatter formatter;
+
+
+        protected Handler()
+        {
+        }
+
+        abstract public void push(Record record);
+        abstract public void flush();
+        abstract public void SetFormatter(IFormatter formatter);
     }
 }

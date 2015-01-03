@@ -6,7 +6,11 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Formatter
+    public class Formatter : IFormatter
     {
+        public string FormatMessage(Record record)
+        {
+            return record.Message;
+        }
     }
 }
