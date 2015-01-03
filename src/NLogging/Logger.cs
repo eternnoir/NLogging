@@ -62,13 +62,19 @@
 
         public void WriteLog(LogLevel level, string message)
         {
+            this.pushLog(level, message);
+        }
+
+        private void pushLog(LogLevel level, string message)
+        {
             if (message == null)
             {
                 //TODO change exception
                 throw new Exception("Message can not be null");
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
-            string functionName = stack.GetFrame(1).GetMethod().Name;
+            // Get caller method name.
+            string functionName = stack.GetFrame(2).GetMethod().Name;
             Record record = new Record(this.loggerName, level, stack, message, functionName);
             foreach (var handler in handlerList)
             {
@@ -83,7 +89,7 @@
             {
                 return;
             }
-            this.WriteLog(LogLevel.CRITICAL, message);
+            this.pushLog(LogLevel.CRITICAL, message);
         }
 
 
@@ -93,7 +99,7 @@
             {
                 return;
             }
-            this.WriteLog(LogLevel.ERROR, message); ;
+            this.pushLog(LogLevel.ERROR, message); ;
         }
 
 
@@ -103,7 +109,7 @@
             {
                 return;
             }
-            this.WriteLog(LogLevel.WARNING, message);
+            this.pushLog(LogLevel.WARNING, message);
         }
 
         public void Info(string message)
@@ -112,7 +118,7 @@
             {
                 return;
             }
-            this.WriteLog(LogLevel.INFO, message);
+            this.pushLog(LogLevel.INFO, message);
         }
 
         public void Debug(string message)
@@ -121,7 +127,7 @@
             {
                 return;
             }
-            this.WriteLog(LogLevel.DEBUG, message);
+            this.pushLog(LogLevel.DEBUG, message);
         }
 
 
@@ -133,8 +139,6 @@
             }
             return true;
         }
-
-
 
     }
 }
