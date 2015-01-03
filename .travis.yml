@@ -1,2 +1,10 @@
 language: csharp
 solution: src/NLogging/NLogging.sln
+install:
+  - sudo apt-get install nunit-console
+  - nuget restore ./src/yoursolution.sln
+
+script:
+  - xbuild src/NLogging/NLogging.sln
+  - xbuild src/NLogging.Test/NLogging.Test.sln
+  - nunit-console ./src/NLogging.Test/bin/Debug/NLogging.Test.dll
