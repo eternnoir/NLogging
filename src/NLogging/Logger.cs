@@ -26,7 +26,10 @@
 
         public void SetLevel(LogLevel level)
         {
-            this.logLevel = level;
+            lock (syncObj)
+            {
+                this.logLevel = level;
+            }
         }
 
         public Logger(string loggerName)
@@ -74,8 +77,9 @@
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
             // Get caller method name.
-            string functionName = stack.GetFrame(2).GetMethod().Name;
-            Record record = new Record(this.loggerName, level, stack, message, functionName);
+            StackFrame callerStackFrame = stack.GetFrame(2);
+            string functionName = callerStackFrame.GetMethod().Name;
+            Record record = new Record(this.loggerName, level, stack, message, functionName,callerStackFrame);
             foreach (var handler in handlerList)
             {
                 handler.push(record);

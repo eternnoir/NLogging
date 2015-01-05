@@ -13,6 +13,7 @@
         private StackTrace stack;
         private string msg;
         private string func;
+        private StackFrame callerStackFrame;
 
         public string LoggerName
         {
@@ -46,6 +47,14 @@
             }
         }
 
+        public string FileName
+        {
+            get
+            {
+                return this.callerStackFrame.GetFileName();
+            }
+        }
+
         public string FunctionName
         {
             get
@@ -54,13 +63,22 @@
             }
         }
 
-        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func)
+        public StackFrame CallerStackFrame
+        {
+            get
+            {
+                return this.callerStackFrame;
+            }
+        }
+
+        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame)
         {
             this.loggerName = loggerName;
             this.level = logLevel;
             this.stack = stacktrace;
             this.msg = msg;
             this.func = func;
+            this.callerStackFrame = callerStackFrame;
         }
 
     }
