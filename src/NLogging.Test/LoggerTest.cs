@@ -97,18 +97,6 @@ namespace NLogging.Test
             Assert.AreEqual(handler.GetRecordList()[0].FunctionName, "TestRecordMethodName");
         }
 
-        [Test]
-        public void TestRecordFileName()
-        {
-            var logger = createTestLogger("TestRecordFileName");
-            var handler = new StubHandler();
-            logger.AddHandler(handler);
-            logger.SetLevel(LogLevel.INFO);
-            logger.Info("Test Msg");
-            Assert.AreEqual(handler.GetRecordList().Count, 1);
-            Assert.True(handler.GetRecordList()[0].FileName.Contains("LoggerTest.cs"));
-        }
-
         private void pushLogMsg(ILogger logger)
         {
             logger.Debug("Debug Msg");
