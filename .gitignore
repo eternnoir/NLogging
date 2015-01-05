@@ -16,6 +16,7 @@ bld/
 [Oo]bj/
 .directory
 packages/
+*.StyleCop
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
