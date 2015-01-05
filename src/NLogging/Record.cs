@@ -63,6 +63,15 @@
             }
         }
 
+
+        public int LineNumber
+        {
+            get
+            {
+                return this.callerStackFrame.GetFileLineNumber();
+            }
+        }
+
         public StackFrame CallerStackFrame
         {
             get
