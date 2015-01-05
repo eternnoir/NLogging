@@ -15,6 +15,16 @@
         private string func;
         private StackFrame callerStackFrame;
 
+        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame)
+        {
+            this.loggerName = loggerName;
+            this.level = logLevel;
+            this.stack = stacktrace;
+            this.msg = msg;
+            this.func = func;
+            this.callerStackFrame = callerStackFrame;
+        }
+
         public string LoggerName
         {
             get
@@ -78,16 +88,6 @@
             {
                 return this.callerStackFrame;
             }
-        }
-
-        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame)
-        {
-            this.loggerName = loggerName;
-            this.level = logLevel;
-            this.stack = stacktrace;
-            this.msg = msg;
-            this.func = func;
-            this.callerStackFrame = callerStackFrame;
         }
 
     }

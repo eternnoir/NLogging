@@ -58,7 +58,7 @@
             {
                 if (this.loggerDictionary.ContainsKey(logger.Name))
                 {
-                    //TODO throw exception
+                    // TODO throw exception
                     throw new Exception("Logger exist.");
                 }
                 this.loggerDictionary.Add(logger.Name, logger);
