@@ -122,13 +122,13 @@ namespace NLogging.Test
             this.recordList = new List<Record>();
         }
 
-        public override void push(Record record)
+        public override void Push(Record record)
         {
             Console.WriteLine(record.FunctionName);  
             recordList.Add(record);
         }
 
-        public override void flush()
+        public override void Flush()
         {
             throw new NotImplementedException();
         }

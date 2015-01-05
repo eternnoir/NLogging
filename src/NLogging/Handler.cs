@@ -10,18 +10,21 @@
     {
         private IFormatter formatter;
 
+
         protected Handler()
         {
             this.formatter = new Formatter();
         }
 
-        abstract public void push(Record record);
-        abstract public void flush();
+        public abstract void Push(Record record);
+        public abstract void Flush();
 
         public void SetFormatter(IFormatter formatter)
         {
             this.formatter = formatter;
         }
+
+
 
     }
 }
