@@ -59,7 +59,7 @@
             {
                 if (this.loggerDictionary.ContainsKey(logger.Name))
                 {
-                    throw new LoggerNameduplicateException("Logger Name " + logger.Name + " Duplicate.", logger.Name);
+                    throw new LoggerNameDuplicateException("Logger Name " + logger.Name + " Duplicate.", logger.Name);
                 }
                 this.loggerDictionary.Add(logger.Name, logger);
             }
