@@ -32,6 +32,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\LoggerNameduplicateException.cs" />
+    <Compile Include="Exceptions\NLoggingException.cs" />
     <Compile Include="Formatter.cs" />
     <Compile Include="Handler.cs" />
     <Compile Include="IFormatter.cs" />
