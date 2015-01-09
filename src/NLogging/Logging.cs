@@ -1,5 +1,6 @@
 ﻿namespace NLogging
 {
+    using NLogging.Exceptions;
     using System;
     using System.Collections.Generic;
 
@@ -58,8 +59,7 @@
             {
                 if (this.loggerDictionary.ContainsKey(logger.Name))
                 {
-                    // TODO throw exception
-                    throw new Exception("Logger exist.");
+                    throw new LoggerNameduplicateException("Logger Name " + logger.Name + " Duplicate.", logger.Name);
                 }
                 this.loggerDictionary.Add(logger.Name, logger);
             }
