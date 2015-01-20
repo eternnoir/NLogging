@@ -41,6 +41,11 @@
             }
         }
 
+        /// <summary>
+        /// Get loogger by logger name.
+        /// </summary>
+        /// <param name="loggerName">Which logger name you want to get.</param>
+        /// <returns></returns>
         public ILogger GetLogger(string loggerName)
         {
             lock (syncRoot)
@@ -53,6 +58,11 @@
             }
         }
 
+        /// <summary>
+        /// Add logger manually. But you can not add logger if thie logger name already exists. 
+        /// </summary>
+        /// <param name="logger">Your logger class.</param>
+        /// <Exception crf="LoggerNameDuplicateException">If logger name already exists.</Exception>>
         public void AddLogger(ILogger logger)
         {
             lock (syncRoot)

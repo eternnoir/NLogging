@@ -142,8 +142,11 @@
             }
         }
 
-
-
+        /// <summary>
+        /// Write log whith loglevel and message.
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="message"></param>
         public void WriteLog(LogLevel level, string message)
         {
             this.WriteLog(level, message, null);
