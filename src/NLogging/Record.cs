@@ -6,6 +6,9 @@
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// Logging Record.
+    /// </summary>
     public class Record
     {
         private string loggerName;
@@ -27,6 +30,9 @@
             this.exception = e;
         }
 
+        /// <summary>
+        /// Which logger record.
+        /// </summary>
         public string LoggerName
         {
             get
@@ -35,6 +41,9 @@
             }
         }
 
+        /// <summary>
+        /// Record's log level.
+        /// </summary>
         public LogLevel Level
         {
             get
@@ -43,6 +52,9 @@
             }
         }
 
+        /// <summary>
+        /// Record's stack trace.
+        /// </summary>
         public StackTrace Stack
         {
             get
@@ -51,6 +63,9 @@
             }
         }
 
+        /// <summary>
+        /// Log message.
+        /// </summary>
         public string Message
         {
             get
@@ -59,6 +74,9 @@
             }
         }
 
+        /// <summary>
+        /// Logging file name.
+        /// </summary>
         public string FileName
         {
             get
@@ -67,6 +85,9 @@
             }
         }
 
+        /// <summary>
+        /// Which method logged.
+        /// </summary>
         public string FunctionName
         {
             get
@@ -75,7 +96,9 @@
             }
         }
 
-
+        /// <summary>
+        /// Line number call log.
+        /// </summary>
         public int LineNumber
         {
             get
@@ -91,7 +114,10 @@
                 return this.callerStackFrame;
             }
         }
-
+        
+        /// <summary>
+        /// Log exception.
+        /// </summary>
         public Exception Exception
         {
             get
