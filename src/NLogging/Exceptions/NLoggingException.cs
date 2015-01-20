@@ -1,6 +1,9 @@
 ﻿using System;
 namespace NLogging.Exceptions
 {
+    /// <summary>
+    /// NLogging Base Exception.
+    /// </summary>
     [Serializable]
     public class NLoggingException : Exception
     {

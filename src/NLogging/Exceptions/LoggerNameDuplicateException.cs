@@ -1,5 +1,8 @@
 ﻿namespace NLogging.Exceptions
 {
+    /// <summary>
+    /// Throw this exception when add same name logger.
+    /// </summary>
     public class LoggerNameDuplicateException : NLoggingException
     {
         public string LoggerName { get; set; }

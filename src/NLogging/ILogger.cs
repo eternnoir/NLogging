@@ -1,6 +1,9 @@
 ﻿namespace NLogging
 {
     using System;
+    /// <summary>
+    /// Logger interface.
+    /// </summary>
     public interface ILogger
     {
         string Name

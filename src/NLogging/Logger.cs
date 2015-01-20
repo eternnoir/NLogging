@@ -8,6 +8,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// A thread safe basic logger.
+    /// </summary>
     public class Logger : ILogger
     {
         private string loggerName;

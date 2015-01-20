@@ -6,6 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Basic Fomatter.
+    /// </summary>
     public class Formatter : IFormatter
     {
         public string FormatMessage(Record record)
