@@ -14,8 +14,9 @@
         private string msg;
         private string func;
         private StackFrame callerStackFrame;
+        private Exception exception;
 
-        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame)
+        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame,Exception e)
         {
             this.loggerName = loggerName;
             this.level = logLevel;
@@ -23,6 +24,7 @@
             this.msg = msg;
             this.func = func;
             this.callerStackFrame = callerStackFrame;
+            this.exception = e;
         }
 
         public string LoggerName
@@ -87,6 +89,14 @@
             get
             {
                 return this.callerStackFrame;
+            }
+        }
+
+        public Exception Exception
+        {
+            get
+            {
+                return this.exception;
             }
         }
 

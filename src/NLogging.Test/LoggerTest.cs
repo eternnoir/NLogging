@@ -97,6 +97,25 @@ namespace NLogging.Test
             Assert.AreEqual(handler.GetRecordList()[0].FunctionName, "TestRecordMethodName");
         }
 
+        [Test]
+        public void TestRecordException()
+        {
+            var logger = createTestLogger("TestRecordException");
+            var handler = new StubHandler();
+            logger.AddHandler(handler);
+            logger.SetLevel(LogLevel.INFO);
+            try
+            {
+                throw new Exception("TestExce");
+            }
+            catch (Exception e)
+            {
+                logger.Info(e, "Test Msg");
+            }
+            Assert.AreEqual(handler.GetRecordList().Count, 1);
+            Assert.AreEqual(handler.GetRecordList()[0].Exception.Message, "TestExce");
+        }
+
         private void pushLogMsg(ILogger logger)
         {
             logger.Debug("Debug Msg");

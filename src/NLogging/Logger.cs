@@ -1,5 +1,6 @@
 ﻿namespace NLogging
 {
+    using NLogging.Exceptions;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -32,8 +33,6 @@
             }
         }
 
-
-
         public void SetLevel(LogLevel level)
         {
             lock (this.syncObj)
@@ -42,17 +41,23 @@
             }
         }
 
-
-
         public void Critical(string message)
         {
             if (!this.CanLog(LogLevel.CRITICAL))
             {
                 return;
             }
-            this.PushLog(LogLevel.CRITICAL, message);
+            this.PushLog(LogLevel.CRITICAL, message,null);
         }
 
+        public void Critical(Exception e,string message)
+        {
+            if (!this.CanLog(LogLevel.CRITICAL))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.CRITICAL, message,e);
+        }
 
         public void Error(string message)
         {
@@ -60,9 +65,17 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.ERROR, message);
+            this.PushLog(LogLevel.ERROR, message,null);
         }
 
+        public void Error(Exception e, string message)
+        {
+            if (!this.CanLog(LogLevel.ERROR))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.ERROR, message,e);
+        }
 
         public void Warning(string message)
         {
@@ -70,7 +83,16 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.WARNING, message);
+            this.PushLog(LogLevel.WARNING, message,null);
+        }
+
+        public void Warning(Exception e, string message)
+        {
+            if (!this.CanLog(LogLevel.WARNING))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.WARNING, message,e);
         }
 
         public void Info(string message)
@@ -79,7 +101,16 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.INFO, message);
+            this.PushLog(LogLevel.INFO, message,null);
+        }
+
+        public void Info(Exception e, string message)
+        {
+            if (!this.CanLog(LogLevel.INFO))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.INFO, message,e);
         }
 
         public void Debug(string message)
@@ -88,7 +119,16 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.DEBUG, message);
+            this.PushLog(LogLevel.DEBUG, message,null);
+        }
+
+        public void Debug(Exception e, string message)
+        {
+            if (!this.CanLog(LogLevel.DEBUG))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.DEBUG, message,e);
         }
 
         public void AddHandler(IHandler handler)
@@ -102,9 +142,16 @@
             }
         }
 
+
+
         public void WriteLog(LogLevel level, string message)
         {
-            this.PushLog(level, message);
+            this.WriteLog(level, message, null);
+        }
+
+        public void WriteLog(LogLevel level, string message,Exception e)
+        {
+            this.PushLog(level, message,e);
         }
 
         private void Init(string loggerName, LogLevel logLevel)
@@ -117,18 +164,17 @@
             }
         }
 
-        private void PushLog(LogLevel level, string message)
+        private void PushLog(LogLevel level, string message,Exception e)
         {
             if (message == null)
             {
-                // TODO change exception
-                throw new Exception("Message can not be null");
+                throw new NLoggingException("Message can not be null");
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
             // Get caller method name.
             StackFrame callerStackFrame = stack.GetFrame(2);
             string functionName = callerStackFrame.GetMethod().Name;
-            Record record = new Record(this.loggerName, level, stack, message, functionName, callerStackFrame);
+            Record record = new Record(this.loggerName, level, stack, message, functionName, callerStackFrame,e);
             foreach (var handler in this.handlerList)
             {
                 handler.Push(record);
@@ -145,6 +191,7 @@
             }
             return true;
         }
+
 
     }
 }
