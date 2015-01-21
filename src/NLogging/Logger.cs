@@ -18,6 +18,11 @@
         private List<IHandler> handlerList;
         private object syncObj = new object();
 
+        /// <summary>
+        /// Logger constractor.
+        /// Default log level is NOSET.
+        /// </summary>
+        /// <param name="loggerName"></param>
         public Logger(string loggerName)
         {
             this.Init(loggerName, LogLevel.NOTSET);
@@ -36,6 +41,10 @@
             }
         }
 
+        /// <summary>
+        /// Set log level to this logger.
+        /// </summary>
+        /// <param name="level"></param>
         public void SetLevel(LogLevel level)
         {
             lock (this.syncObj)
