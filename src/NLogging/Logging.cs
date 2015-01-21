@@ -1,5 +1,6 @@
 ﻿namespace NLogging
 {
+    using NLogging.Exceptions;
     using System;
     using System.Collections.Generic;
 
@@ -40,6 +41,11 @@
             }
         }
 
+        /// <summary>
+        /// Get loogger by logger name.
+        /// </summary>
+        /// <param name="loggerName">Which logger name you want to get.</param>
+        /// <returns></returns>
         public ILogger GetLogger(string loggerName)
         {
             lock (syncRoot)
@@ -52,14 +58,18 @@
             }
         }
 
+        /// <summary>
+        /// Add logger manually. But you can not add logger if thie logger name already exists. 
+        /// </summary>
+        /// <param name="logger">Your logger class.</param>
+        /// <Exception crf="LoggerNameDuplicateException">If logger name already exists.</Exception>>
         public void AddLogger(ILogger logger)
         {
             lock (syncRoot)
             {
                 if (this.loggerDictionary.ContainsKey(logger.Name))
                 {
-                    //TODO throw exception
-                    throw new Exception("Logger exist.");
+                    throw new LoggerNameDuplicateException("Logger Name " + logger.Name + " Duplicate.", logger.Name);
                 }
                 this.loggerDictionary.Add(logger.Name, logger);
             }

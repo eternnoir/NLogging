@@ -6,6 +6,9 @@
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// Logging Record.
+    /// </summary>
     public class Record
     {
         private string loggerName;
@@ -14,7 +17,22 @@
         private string msg;
         private string func;
         private StackFrame callerStackFrame;
+        private Exception exception;
 
+        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame,Exception e)
+        {
+            this.loggerName = loggerName;
+            this.level = logLevel;
+            this.stack = stacktrace;
+            this.msg = msg;
+            this.func = func;
+            this.callerStackFrame = callerStackFrame;
+            this.exception = e;
+        }
+
+        /// <summary>
+        /// Which logger record.
+        /// </summary>
         public string LoggerName
         {
             get
@@ -23,6 +41,9 @@
             }
         }
 
+        /// <summary>
+        /// Record's log level.
+        /// </summary>
         public LogLevel Level
         {
             get
@@ -31,6 +52,9 @@
             }
         }
 
+        /// <summary>
+        /// Record's stack trace.
+        /// </summary>
         public StackTrace Stack
         {
             get
@@ -39,6 +63,9 @@
             }
         }
 
+        /// <summary>
+        /// Log message.
+        /// </summary>
         public string Message
         {
             get
@@ -47,6 +74,9 @@
             }
         }
 
+        /// <summary>
+        /// Logging file name.
+        /// </summary>
         public string FileName
         {
             get
@@ -55,6 +85,9 @@
             }
         }
 
+        /// <summary>
+        /// Which method logged.
+        /// </summary>
         public string FunctionName
         {
             get
@@ -63,7 +96,9 @@
             }
         }
 
-
+        /// <summary>
+        /// Line number call log.
+        /// </summary>
         public int LineNumber
         {
             get
@@ -79,15 +114,16 @@
                 return this.callerStackFrame;
             }
         }
-
-        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame)
+        
+        /// <summary>
+        /// Log exception.
+        /// </summary>
+        public Exception Exception
         {
-            this.loggerName = loggerName;
-            this.level = logLevel;
-            this.stack = stacktrace;
-            this.msg = msg;
-            this.func = func;
-            this.callerStackFrame = callerStackFrame;
+            get
+            {
+                return this.exception;
+            }
         }
 
     }

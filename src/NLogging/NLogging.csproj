@@ -32,7 +32,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formatter.cs" />
+    <Compile Include="ConsoleHandler.cs" />
+    <Compile Include="Exceptions\LoggerNameDuplicateException.cs" />
+    <Compile Include="Exceptions\NLoggingException.cs" />
+    <Compile Include="SimpleFormatter.cs" />
     <Compile Include="Handler.cs" />
     <Compile Include="IFormatter.cs" />
     <Compile Include="IHandler.cs" />

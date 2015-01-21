@@ -8,12 +8,11 @@
 
     public abstract class Handler : IHandler
     {
-        private IFormatter formatter;
-
+        protected IFormatter formatter;
 
         protected Handler()
         {
-            this.formatter = new Formatter();
+            this.formatter = new SimpleFormatter();
         }
 
         public abstract void Push(Record record);
