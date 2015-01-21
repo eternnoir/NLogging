@@ -8,8 +8,7 @@
 
     public abstract class Handler : IHandler
     {
-        private IFormatter formatter;
-
+        protected IFormatter formatter;
 
         protected Handler()
         {
