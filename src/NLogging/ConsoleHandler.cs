@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NLogging
 {
-    class ConsoleHandler : Handler
+    class ConsoleHandler : AbstractHandler
     {
         public override void Push(Record record)
         {

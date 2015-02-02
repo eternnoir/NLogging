@@ -5,7 +5,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// A Logging class.
+    /// A Logging class. You can get logger by this class.
     /// </summary>
     public class Logging
     {
@@ -25,6 +25,9 @@
             this.loggerDictionary = new Dictionary<string, ILogger>();
         }
 
+        /// <summary>
+        /// Singleton get instance property. 
+        /// </summary>
         public static Logging Instance
         {
             get

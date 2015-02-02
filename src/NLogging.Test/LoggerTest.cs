@@ -132,7 +132,7 @@ namespace NLogging.Test
         }
     }
 
-    class StubHandler : Handler
+    class StubHandler : AbstractHandler
     {
         private List<Record> recordList;
 

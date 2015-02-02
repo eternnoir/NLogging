@@ -6,11 +6,11 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public abstract class Handler : IHandler
+    public abstract class AbstractHandler : IHandler
     {
         protected IFormatter formatter;
 
-        protected Handler()
+        protected AbstractHandler()
         {
             this.formatter = new SimpleFormatter();
         }
@@ -22,8 +22,5 @@
         {
             this.formatter = formatter;
         }
-
-
-
     }
 }
