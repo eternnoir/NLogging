@@ -39,6 +39,7 @@ namespace NLogging.Test
             }
             catch (LoggerNameDuplicateException ex)
             {
+                System.Console.WriteLine(ex.ToString());
                 Assert.True(true);
             }
         }

@@ -11,12 +11,33 @@
     /// </summary>
     public class Record
     {
+        /// <summary>
+        /// Which logger make this record.
+        /// </summary>
         private string loggerName;
+        /// <summary>
+        /// Log level
+        /// </summary>
         private LogLevel level;
+        /// <summary>
+        /// Log call stack.
+        /// </summary>
         private StackTrace stack;
+        /// <summary>
+        /// message.
+        /// </summary>
         private string msg;
+        /// <summary>
+        /// Which function call logger.
+        /// </summary>
         private string func;
+        /// <summary>
+        /// The Stack frame which function call logger.
+        /// </summary>
         private StackFrame callerStackFrame;
+        /// <summary>
+        /// Exception. It will be null if not exception.
+        /// </summary>
         private Exception exception;
 
         public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame,Exception e)
@@ -107,6 +128,9 @@
             }
         }
 
+        /// <summary>
+        /// The stackframe which call logger.
+        /// </summary>
         public StackFrame CallerStackFrame
         {
             get

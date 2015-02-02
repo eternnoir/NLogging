@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace NLogging
+﻿namespace NLogging
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+
     class ConsoleHandler : AbstractHandler
     {
         public override void Push(Record record)
