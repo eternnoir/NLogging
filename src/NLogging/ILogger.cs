@@ -6,10 +6,14 @@
     /// </summary>
     public interface ILogger
     {
+        /// <summary>
+        /// Name getter.
+        /// </summary>
         string Name
         {
             get;
         }
+
         void SetLevel(LogLevel level);
         void AddHandler(IHandler handler);
         void Critical(string message);

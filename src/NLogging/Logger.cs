@@ -33,6 +33,9 @@
             this.Init(loggerName, logLevel);
         }
 
+        /// <summary>
+        /// Logger Name property getter.
+        /// </summary>
         public string Name 
         {
             get
@@ -53,6 +56,10 @@
             }
         }
 
+        /// <summary>
+        /// Log Critical.
+        /// </summary>
+        /// <param name="message">Log message.</param>
         public void Critical(string message)
         {
             if (!this.CanLog(LogLevel.CRITICAL))
@@ -62,6 +69,11 @@
             this.PushLog(LogLevel.CRITICAL, message,null);
         }
 
+        /// <summary>
+        /// Log Critical with exception.
+        /// </summary>
+        /// <param name="e">Exception</param>
+        /// <param name="message">Log message</param>
         public void Critical(Exception e,string message)
         {
             if (!this.CanLog(LogLevel.CRITICAL))
@@ -186,7 +198,7 @@
                 throw new NLoggingException("Message can not be null");
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
-            // Get caller method name.
+            // Get caller method name. 2 level upper from stack frames.
             StackFrame callerStackFrame = stack.GetFrame(2);
             string functionName = callerStackFrame.GetMethod().Name;
             Record record = new Record(this.loggerName, level, stack, message, functionName, callerStackFrame,e);
