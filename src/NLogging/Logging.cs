@@ -13,6 +13,8 @@
         /// Singleton
         /// </summary>
         private static volatile Logging instance;
+        public bool DebugMode { get; set; }
+
         /// <summary>
         /// For thread safe.
         /// </summary>
@@ -72,10 +74,27 @@
             {
                 if (this.loggerDictionary.ContainsKey(logger.Name))
                 {
-                    throw new LoggerNameDuplicateException("Logger Name " + logger.Name + " Duplicate.", logger.Name);
+                   WriteDebugMessage("Logger Name " + logger.Name + " Duplicate.");
+                   return;
                 }
                 this.loggerDictionary.Add(logger.Name, logger);
             }
+        }
+
+
+        public void WriteDebugMessage(string message)
+        {
+            if (this.DebugMode)
+            {
+                System.Diagnostics.Debug.Assert(!string.IsNullOrEmpty(message));
+                System.Diagnostics.Trace.WriteLine(this.FormateDebugMessage(message));
+            }
+        }
+
+        private String FormateDebugMessage(string message)
+        {
+            String formatedMessage = String.Format("[NLogging] {0} -- {1}", DateTime.Now.ToString(), message);
+            return formatedMessage;
         }
 
     }
