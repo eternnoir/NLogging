@@ -27,21 +27,5 @@ namespace NLogging.Test
             Assert.AreNotSame(logger1, logger2);
         }
 
-        [Test]
-        public void TestLoggerNameDuplicateException()
-        {
-            ILogger logger1 = Logging.Instance.GetLogger("LoggerName1");
-            ILogger logger2 = new Logger("LoggerName1");
-            try
-            {
-                Logging.Instance.AddLogger(logger2);
-                Assert.True(false);
-            }
-            catch (LoggerNameDuplicateException ex)
-            {
-                System.Console.WriteLine(ex.ToString());
-                Assert.True(true);
-            }
-        }
     }
 }
