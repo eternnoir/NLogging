@@ -83,6 +83,10 @@
             this.PushLog(LogLevel.CRITICAL, message,e);
         }
 
+        /// <summary>
+        /// Log Error.
+        /// </summary>
+        /// <param name="message">Log message.</param>
         public void Error(string message)
         {
             if (!this.CanLog(LogLevel.ERROR))
@@ -92,6 +96,12 @@
             this.PushLog(LogLevel.ERROR, message,null);
         }
 
+
+        /// <summary>
+        /// Log Error with exception.
+        /// </summary>
+        /// <param name="e">Exception</param>
+        /// <param name="message">Log message</param>
         public void Error(Exception e, string message)
         {
             if (!this.CanLog(LogLevel.ERROR))
@@ -101,6 +111,10 @@
             this.PushLog(LogLevel.ERROR, message,e);
         }
 
+        /// <summary>
+        /// Log Warning.
+        /// </summary>
+        /// <param name="message">Log message.</param
         public void Warning(string message)
         {
             if (!this.CanLog(LogLevel.WARNING))
@@ -110,6 +124,11 @@
             this.PushLog(LogLevel.WARNING, message,null);
         }
 
+        /// <summary>
+        /// Log Warning with exception.
+        /// </summary>
+        /// <param name="e">Exception</param>
+        /// <param name="message">Log message</param>
         public void Warning(Exception e, string message)
         {
             if (!this.CanLog(LogLevel.WARNING))
@@ -119,6 +138,10 @@
             this.PushLog(LogLevel.WARNING, message,e);
         }
 
+        /// <summary>
+        /// Log Info.
+        /// </summary>
+        /// <param name="message">Log message.</param
         public void Info(string message)
         {
             if (!this.CanLog(LogLevel.INFO))
@@ -128,6 +151,11 @@
             this.PushLog(LogLevel.INFO, message,null);
         }
 
+        /// <summary>
+        /// Log Info with exception.
+        /// </summary>
+        /// <param name="e">Exception</param>
+        /// <param name="message">Log message</param>
         public void Info(Exception e, string message)
         {
             if (!this.CanLog(LogLevel.INFO))
@@ -137,6 +165,10 @@
             this.PushLog(LogLevel.INFO, message,e);
         }
 
+        /// <summary>
+        /// Log Debug.
+        /// </summary>
+        /// <param name="message">Log message.</param
         public void Debug(string message)
         {
             if (!this.CanLog(LogLevel.DEBUG))
@@ -146,6 +178,11 @@
             this.PushLog(LogLevel.DEBUG, message,null);
         }
 
+        /// <summary>
+        /// Log Debug with exception.
+        /// </summary>
+        /// <param name="e">Exception</param>
+        /// <param name="message">Log message</param>
         public void Debug(Exception e, string message)
         {
             if (!this.CanLog(LogLevel.DEBUG))
@@ -195,7 +232,7 @@
         {
             if (message == null)
             {
-                throw new NLoggingException("Message can not be null");
+               Logging.Instance.WriteDebugMessage("Message can not be null");
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
             // Get caller method name. 2 level upper from stack frames.
@@ -208,8 +245,6 @@
             }
         }
 
-
-
         private bool CanLog(LogLevel level)
         {
             if (level < this.logLevel)
@@ -218,7 +253,5 @@
             }
             return true;
         }
-
-
     }
 }
