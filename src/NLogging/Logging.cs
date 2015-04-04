@@ -7,59 +7,34 @@
     /// <summary>
     /// A Logging class. You can get logger by this class.
     /// </summary>
-    public class Logging
+    public static class Logging
     {
         /// <summary>
         /// Singleton
         /// </summary>
-        private static volatile Logging instance;
-        public bool DebugMode { get; set; }
+        public static bool DebugMode { get; set; }
 
         /// <summary>
         /// For thread safe.
         /// </summary>
         private static object syncRoot = new object();
 
-        private Dictionary<string, ILogger> loggerDictionary;
-
-        private Logging()
-        {
-            this.loggerDictionary = new Dictionary<string, ILogger>();
-        }
-
-        /// <summary>
-        /// Singleton get instance property. 
-        /// </summary>
-        public static Logging Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new Logging();
-                    }
-                }
-                return instance;
-            }
-        }
+        private static Dictionary<string, ILogger> loggerDictionary = new Dictionary<string, ILogger>();
 
         /// <summary>
         /// Get loogger by logger name.
         /// </summary>
         /// <param name="loggerName">Which logger name you want to get.</param>
         /// <returns></returns>
-        public ILogger GetLogger(string loggerName)
+        public static ILogger GetLogger(string loggerName)
         {
             lock (syncRoot)
             {
-                if (!this.loggerDictionary.ContainsKey(loggerName))
+                if (!loggerDictionary.ContainsKey(loggerName))
                 {
-                    this.loggerDictionary.Add(loggerName, new Logger(loggerName));
+                    loggerDictionary.Add(loggerName, new Logger(loggerName));
                 }
-                return this.loggerDictionary[loggerName];
+                return loggerDictionary[loggerName];
             }
         }
 
@@ -68,30 +43,30 @@
         /// </summary>
         /// <param name="logger">Your logger class.</param>
         /// <Exception crf="LoggerNameDuplicateException">If logger name already exists.</Exception>>
-        public void AddLogger(ILogger logger)
+        public static void AddLogger(ILogger logger)
         {
             lock (syncRoot)
             {
-                if (this.loggerDictionary.ContainsKey(logger.Name))
+                if (loggerDictionary.ContainsKey(logger.Name))
                 {
                    WriteDebugMessage("Logger Name " + logger.Name + " Duplicate.");
                    return;
                 }
-                this.loggerDictionary.Add(logger.Name, logger);
+                loggerDictionary.Add(logger.Name, logger);
             }
         }
 
 
-        public void WriteDebugMessage(string message)
+        public static void WriteDebugMessage(string message)
         {
-            if (this.DebugMode)
+            if (DebugMode)
             {
                 System.Diagnostics.Debug.Assert(!string.IsNullOrEmpty(message));
-                System.Diagnostics.Trace.WriteLine(this.FormateDebugMessage(message));
+                System.Diagnostics.Trace.WriteLine(FormateDebugMessage(message));
             }
         }
 
-        private String FormateDebugMessage(string message)
+        private static String FormateDebugMessage(string message)
         {
             String formatedMessage = String.Format("[NLogging] {0} -- {1}", DateTime.Now.ToString(), message);
             return formatedMessage;

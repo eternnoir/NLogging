@@ -40,7 +40,8 @@
         /// </summary>
         private Exception exception;
 
-        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace, string msg, string func, StackFrame callerStackFrame,Exception e)
+        public Record(string loggerName, LogLevel logLevel, StackTrace stacktrace,
+            string msg, string func, StackFrame callerStackFrame,Exception e)
         {
             this.loggerName = loggerName;
             this.level = logLevel;

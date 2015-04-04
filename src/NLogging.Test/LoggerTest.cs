@@ -14,7 +14,7 @@ namespace NLogging.Test
         public void TestLoggerName()
         {
             var loggerName ="TestLogger1"; 
-            var logger =  Logging.Instance.GetLogger(loggerName);
+            var logger =  Logging.GetLogger(loggerName);
             Assert.AreEqual(loggerName, logger.Name);
         }
 
@@ -22,7 +22,7 @@ namespace NLogging.Test
         public void TestAddHandler()
         {
             var loggerName = "TestAddHandler";
-            var logger = Logging.Instance.GetLogger(loggerName);
+            var logger = Logging.GetLogger(loggerName);
             var handler = new StubHandler();
             logger.AddHandler(handler);
             logger.Info("TestMsg");
@@ -127,7 +127,7 @@ namespace NLogging.Test
 
         private ILogger createTestLogger(string loggerName)
         {
-            var logger = Logging.Instance.GetLogger(loggerName);
+            var logger = Logging.GetLogger(loggerName);
             return logger;
         }
     }

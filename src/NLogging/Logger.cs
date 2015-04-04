@@ -232,7 +232,7 @@
         {
             if (message == null)
             {
-               Logging.Instance.WriteDebugMessage("Message can not be null");
+               Logging.WriteDebugMessage("Message can not be null");
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
             // Get caller method name. 2 level upper from stack frames.
