@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>0.1.1</version>
+    <authors>Frank Wang</authors>
+    <owners>Frank Wang</owners>
+    <projectUrl>https://github.com/eternnoir/NLogging</projectUrl>
+    <id>NLogging</id>
+    <title>NLogging</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Use logging system like Python logging package and java.util.logging in C# .</description>
+    <summary>A C# logging library.</summary>
+    <tags>log logging</tags>
+  </metadata>
+  <files>
+  <file src="..\bin\Release\*.dll" target="lib\net40" />
+ </files>
+</package>
