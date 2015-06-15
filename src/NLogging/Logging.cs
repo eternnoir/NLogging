@@ -42,7 +42,7 @@
         /// Add logger manually. But you can not add logger if thie logger name already exists. 
         /// </summary>
         /// <param name="logger">Your logger class.</param>
-        /// <Exception crf="LoggerNameDuplicateException">If logger name already exists.</Exception>>
+        /// <Exception crf="LoggerNameDuplicateException">If logger name already exists.</Exception>
         public static void AddLogger(ILogger logger)
         {
             lock (syncRoot)

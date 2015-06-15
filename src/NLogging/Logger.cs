@@ -114,7 +114,7 @@
         /// <summary>
         /// Log Warning.
         /// </summary>
-        /// <param name="message">Log message.</param
+        /// <param name="message">Log message.</param>
         public void Warning(string message)
         {
             if (!this.CanLog(LogLevel.WARNING))
@@ -141,7 +141,7 @@
         /// <summary>
         /// Log Info.
         /// </summary>
-        /// <param name="message">Log message.</param
+        /// <param name="message">Log message.</param>
         public void Info(string message)
         {
             if (!this.CanLog(LogLevel.INFO))
@@ -168,7 +168,7 @@
         /// <summary>
         /// Log Debug.
         /// </summary>
-        /// <param name="message">Log message.</param
+        /// <param name="message">Log message.</param>
         public void Debug(string message)
         {
             if (!this.CanLog(LogLevel.DEBUG))
