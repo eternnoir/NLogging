@@ -13,13 +13,13 @@
     {
         public string FormatMessage(Record record)
         {
-            string formatedMsg = string.Format("===============================\n[{0}] [{1}]:\n==============================={2}",DateTime.Now.ToString(),record.Message);
+            string formatedMsg = string.Format("\n[{0}] [{1}]:\n{2}\n===============\n", DateTime.Now.ToString(), record.FunctionName, record.Message);
             if (record.Exception != null)
             {
-                formatedMsg += "\n[Exception]===============================" + record.Exception.ToString();
+                formatedMsg += "\n[Exception]==============" + record.Exception.ToString();
             }
 
-            return record.Message;
+            return formatedMsg;
         }
     }
 }

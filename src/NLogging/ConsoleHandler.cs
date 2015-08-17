@@ -6,7 +6,7 @@
     using System.Text;
 
 
-    class ConsoleHandler : AbstractHandler
+    public class ConsoleHandler : AbstractHandler
     {
         public override void Push(Record record)
         {
