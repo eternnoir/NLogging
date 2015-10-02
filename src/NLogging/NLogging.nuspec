@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
     <metadata>
         <id>NLogging</id>
-        <version>0.1.0</version>
+        <version>0.1.2</version>
         <title>NLogging</title>
         <authors>Frank Wang</authors>
         <owners>Frank Wang</owners>

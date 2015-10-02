@@ -48,5 +48,8 @@
     <Compile Include="Logging.cs" />
     <Compile Include="Record.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="NLogging.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
