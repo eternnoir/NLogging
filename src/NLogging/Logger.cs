@@ -36,7 +36,7 @@
         /// <summary>
         /// Logger Name property getter.
         /// </summary>
-        public string Name 
+        public string Name
         {
             get
             {
@@ -66,7 +66,21 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.CRITICAL, message,null);
+            this.PushLog(LogLevel.CRITICAL, message, null);
+        }
+
+        /// <summary>
+        ///Log Critical. 
+        /// </summary>
+        /// <param name="format">String Format</param>
+        /// <param name="args">args</param>
+        public void CriticalFormat(string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.CRITICAL))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.CRITICAL, string.Format(format, args), null);
         }
 
         /// <summary>
@@ -74,13 +88,22 @@
         /// </summary>
         /// <param name="e">Exception</param>
         /// <param name="message">Log message</param>
-        public void Critical(Exception e,string message)
+        public void Critical(Exception e, string message)
         {
             if (!this.CanLog(LogLevel.CRITICAL))
             {
                 return;
             }
-            this.PushLog(LogLevel.CRITICAL, message,e);
+            this.PushLog(LogLevel.CRITICAL, message, e);
+        }
+
+        public void CriticalFormat(Exception e, string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.CRITICAL))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.CRITICAL, string.Format(format, args), e); ;
         }
 
         /// <summary>
@@ -93,9 +116,17 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.ERROR, message,null);
+            this.PushLog(LogLevel.ERROR, message, null);
         }
 
+        public void ErrorFormat(string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.ERROR))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.ERROR, string.Format(format, args), null); ;
+        }
 
         /// <summary>
         /// Log Error with exception.
@@ -108,7 +139,17 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.ERROR, message,e);
+            this.PushLog(LogLevel.ERROR, message, e);
+        }
+
+
+        public void ErrorFormat(Exception e, string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.ERROR))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.ERROR, string.Format(format, args), e); ;
         }
 
         /// <summary>
@@ -121,7 +162,17 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.WARNING, message,null);
+            this.PushLog(LogLevel.WARNING, message, null);
+        }
+
+
+        public void WarningFormat(string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.WARNING))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.WARNING, string.Format(format, args), null); ;
         }
 
         /// <summary>
@@ -135,7 +186,17 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.WARNING, message,e);
+            this.PushLog(LogLevel.WARNING, message, e);
+        }
+
+
+        public void WarningFormat(Exception e, string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.WARNING))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.WARNING, string.Format(format, args), e); ;
         }
 
         /// <summary>
@@ -148,7 +209,16 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.INFO, message,null);
+            this.PushLog(LogLevel.INFO, message, null);
+        }
+
+        public void InfoFormat(string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.INFO))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.INFO, string.Format(format, args), null); ;
         }
 
         /// <summary>
@@ -162,8 +232,20 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.INFO, message,e);
+            this.PushLog(LogLevel.INFO, message, e);
         }
+
+
+
+        public void InfoFormat(Exception e, string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.INFO))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.INFO, string.Format(format, args), e); ;
+        }
+
 
         /// <summary>
         /// Log Debug.
@@ -175,7 +257,16 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.DEBUG, message,null);
+            this.PushLog(LogLevel.DEBUG, message, null);
+        }
+
+        public void DebugFormat(string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.DEBUG))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.DEBUG, string.Format(format, args), null); ;
         }
 
         /// <summary>
@@ -189,7 +280,20 @@
             {
                 return;
             }
-            this.PushLog(LogLevel.DEBUG, message,e);
+            this.PushLog(LogLevel.DEBUG, message, e);
+        }
+
+
+
+
+
+        public void DebugFormat(Exception e, string format, params object[] args)
+        {
+            if (!this.CanLog(LogLevel.DEBUG))
+            {
+                return;
+            }
+            this.PushLog(LogLevel.DEBUG, string.Format(format, args), e); ;
         }
 
         public void AddHandler(IHandler handler)
@@ -213,9 +317,9 @@
             this.WriteLog(level, message, null);
         }
 
-        public void WriteLog(LogLevel level, string message,Exception e)
+        public void WriteLog(LogLevel level, string message, Exception e)
         {
-            this.PushLog(level, message,e);
+            this.PushLog(level, message, e);
         }
 
         private void Init(string loggerName, LogLevel logLevel)
@@ -228,17 +332,17 @@
             }
         }
 
-        private void PushLog(LogLevel level, string message,Exception e)
+        private void PushLog(LogLevel level, string message, Exception e)
         {
             if (message == null)
             {
-               Logging.WriteDebugMessage("Message can not be null");
+                Logging.WriteDebugMessage("Message can not be null");
             }
             StackTrace stack = new System.Diagnostics.StackTrace(true);
             // Get caller method name. 2 level upper from stack frames.
             StackFrame callerStackFrame = stack.GetFrame(2);
             string functionName = callerStackFrame.GetMethod().Name;
-            Record record = new Record(this.loggerName, level, stack, message, functionName, callerStackFrame,e);
+            Record record = new Record(this.loggerName, level, stack, message, functionName, callerStackFrame, e);
             foreach (var handler in this.handlerList)
             {
                 handler.Push(record);
